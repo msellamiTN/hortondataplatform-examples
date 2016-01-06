@@ -4,7 +4,7 @@
 
 * Launch the container running Ambari Server and Ambari Agent
 ```
-docker run  -p 8080:8080 --rm -ti --privileged --name hdp -h hdp torusware/hdp
+docker run  -p 8080:8080 --rm -ti --privileged --name hdp -h hdp torusware/hortondataplatform-examples
 ```
 * Open your browser and go to http://localhost:8080
 * Access a running container through ssh
@@ -17,8 +17,8 @@ $ sshpass -p 'torus' ssh root@<container IP>
 ### Configure environment
 
 - Set up the Hadoop ecosystem
-  1. Pull container `docker pull torusware/hdp`
-  2. Launch container as above: `docker run  -p 8080:8080 --rm -ti --privileged --name hdp -h hdp torusware/hdp`
+  1. Pull container `docker pull torusware/hortondataplatform-examples`
+  2. Launch container as above: `docker run  -p 8080:8080 --rm -ti --privileged --name hdp -h hdp torusware/hortondataplatform-examples`
   3. Get a shell within the running container, run ntp service and copy ssh key
   ```
   docker exec -ti hdp /bin/bash
