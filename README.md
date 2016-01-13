@@ -6,6 +6,10 @@
 ```
 docker run  -p 8080:8080 --rm -ti --privileged --name hdp -h hdp torusware/hortondataplatform-examples
 ```
+* You can also deploy a cluster automatically using Ambari blueprints
+```
+docker run -e BLUEPRINT_URL=<ambari blueprint url> -e CLUSTER_TEMPLATE_URL=<cluster template url> -p 8080:8080 --rm -ti --privileged -h hdp  torusware/hortondataplatform-examples
+```
 * Open your browser and go to http://localhost:8080
 * Access a running container through ssh
 ```
@@ -19,16 +23,10 @@ $ sshpass -p 'torus' ssh root@<container IP>
 - Set up the Hadoop ecosystem
   1. Pull container `docker pull torusware/hortondataplatform-examples`
   2. Launch container as above: `docker run  -p 8080:8080 --rm -ti --privileged --name hdp -h hdp torusware/hortondataplatform-examples`
-  3. Get a shell within the running container, run ntp service and copy ssh key
-  ```
-  docker exec -ti hdp /bin/bash
-  $ service ntp start
-  $ cat .ssh/id_rsa
-  ```
-- Access http://localhost:8080 from your host browser
-  1. Login: admin/admin
-  2. Launch install wizard with the hostname and ssh key set in the configuration step
-  3. Install services: HDFS, YARN, Ambari Metrics and Spark
+  4. Access http://localhost:8080 from your host browser
+  5. Login: admin/admin
+  6. Launch install wizard with the hostname and ssh key set in the configuration step
+  7. Install services: HDFS, YARN, Ambari Metrics and Spark
 
 - Run examples within the container shell
 

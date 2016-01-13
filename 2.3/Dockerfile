@@ -3,14 +3,13 @@ MAINTAINER Daniel Gómez Silva <daniel.gomez@torusware.com>
 
 WORKDIR /root
 
-# Required packages download and installation:
+# Required packages download and installation
 RUN apt-get update && apt-get install -y wget \ 
  && wget http://public-repo-1.hortonworks.com/ambari/debian7/2.x/updates/2.2.0.0/ambari.list -O /etc/apt/sources.list.d/ambari.list \
- && wget http://public-repo-1.hortonworks.com/HDP/debian7/2.x/updates/2.3.4.0/hdp.list -O /etc/apt/sources.list.d/hdp.list \
  && apt-key adv --recv-keys --keyserver keyserver.ubuntu.com B9733A7A07513CAD \
- && apt-get update && apt-get install -y vim ssh nmon sudo ambari-server ambari-agent hadoop hadoop-hdfs libhdfs0 hadoop-yarn hadoop-mapreduce hadoop-client openssl zookeeper \
-                                         spark-master spark-python hbase flume kafka
+ && apt-get update && apt-get install -y vim ssh sudo ambari-server ambari-agent ntp
 
+#SSH configuration
 RUN ssh-keygen -t rsa -P "" -f ~/.ssh/id_rsa \
  && cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys \
  && mkdir /var/run/sshd \
